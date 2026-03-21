@@ -3,13 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/', function () {
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/books', function () {
+    return view('dashboard.books');
+})->middleware(['auth', 'verified'])->name('books');
+Route::get('/schedule', function () {
+    return view('dashboard.schedule');
+})->middleware(['auth', 'verified'])->name('schedule');
+
+// Route::middleware(['auth', 'verified'])->group(function(){
+
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -17,4 +24,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
