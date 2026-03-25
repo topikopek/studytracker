@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\BookDashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', fn() => view('dashboard.dashboard'))->name('dashboard');
+    Route::get('/', [BookDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/module/{module}/done', [BookDashboardController::class, 'done']);
     Route::get('/books', fn() => view('dashboard.books'))->name('books');
 });
 
