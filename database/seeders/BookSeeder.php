@@ -8,15 +8,13 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class BookSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call([UserSeeder::class, BookSeeder::class]);
+        Book::factory(10)->recycle(User::all())->has(Module::factory(9))->create();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookDashboardController extends Controller
 {
@@ -13,7 +14,8 @@ class BookDashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard', ['books' => Book::latest()->get()]);
+        $books = Book::latest()->where('user_id', Auth::user()->id)->get();
+        return view('dashboard.dashboard', ['books' => $books]);
     }
 
     /**
