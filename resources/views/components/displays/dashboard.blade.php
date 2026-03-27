@@ -1,10 +1,10 @@
-<div class="m-auto bg-white p-4 rounded shadow-sm">
-    <div class="">
+<div class="max-w-5xl m-auto bg-white p-4 rounded shadow-sm">
+    <div>
         <div>
             <h1 class="text-4xl font-bold p-6 text-center">Welcome, {{ Auth::user()->username }}</h1>
         </div>
         <div class="mb-5">
-            <h2 class="text-3xl font-semibold">My Books</h2>
+            <h2 class="text-3xl font-semibold text-center">My Books</h2>
         </div>
         @foreach ($books as $book)
             <div class="mt-2 text-lg font-bold" x-data="{
@@ -18,7 +18,7 @@
                     }
                 }
             }">
-                <div class="border-2 rounded-md p-2 mt-2">
+                <div class=" border-2 rounded-md p-2 mt-2 max-w-3xl m-auto">
                     <div class="flex justify-between items-center">
                         <h2 class="text-2xl font-bold ps-3">{{ $book->title }}</h2>
                         <span @click="toggle" class="pr-2">
