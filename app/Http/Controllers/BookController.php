@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BookDashboardController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class BookDashboardController extends Controller
     public function index()
     {
         $books = Book::latest()->where('user_id', Auth::user()->id)->get();
-        return view('dashboard.index', ['books' => $books]);
+        return view('mybook.index', ['books' => $books]);
     }
 
     /**
@@ -37,9 +36,9 @@ class BookDashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view('mybook.show', ['book' => $book]);
     }
 
     /**
@@ -64,12 +63,5 @@ class BookDashboardController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function done(Module $module)
-    {
-        $module->update([
-            'is_done' => 1,
-        ]);
-        return back();
     }
 }

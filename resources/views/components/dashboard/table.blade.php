@@ -1,5 +1,5 @@
 <div class="max-w-5xl m-auto bg-white p-4 rounded shadow-sm">
-    <div>
+    <div class="p-7">
         <div>
             <h1 class="text-4xl font-bold p-6 text-center">Welcome, {{ Auth::user()->username }}</h1>
         </div>
@@ -21,9 +21,9 @@
                 <div class=" border-2 rounded-md p-2 mt-2 max-w-3xl m-auto">
                     <div class="flex justify-between items-center">
                         <h2 class="text-2xl font-bold ps-3">{{ $book->title }}</h2>
-                        <span @click="toggle" class="pr-2">
+                        <span @click="toggle" class="pr-2 p-2 bg-gray-100 rounded cursor-pointer ">
                             <svg :class="open ? 'rotate-90' : ''" xmlns="http://www.w3.org/2000/svg"
-                                class="transition-transform duration-200 ease-in-out" width="16" height="16"
+                                class="transition-transform duration-200 ease-in-out cursor-pointer" width="16" height="16"
                                 fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />

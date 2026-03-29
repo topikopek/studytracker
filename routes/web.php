@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookDashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [BookDashboardController::class, 'index'])->name('dashboard');
     Route::get('/module/{module}/done', [BookDashboardController::class, 'done']);
-    Route::get('/books', fn() => view('dashboard.books'))->name('books');
+    Route::get('/books', [BookController::class, 'index'])->name('books');
+    Route::get('/books/{book:slug}', [BookController::class, 'show']);
 });
 
 Route::middleware('auth')->group(function () {
